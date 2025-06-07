@@ -1,0 +1,187 @@
+:root {
+    --text: #ffffff;
+    --accent: #00ffd5;
+    --accent-secondary: #ffa94d;
+    --danger: #ff4d4d;
+    --glass: rgba(255, 255, 255, 0.1);
+}
+
+body.light {
+    --text: #2c3e50;
+    --glass: rgba(0, 0, 0, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 30px 20px;
+    width: 100%;
+    max-width: 620px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeInScale 0.9s ease-out forwards;
+    transform: scale(0.96);
+    opacity: 0;
+    max-height: 96vh;
+    overflow-y: hidden;
+}
+
+@keyframes fadeInScale {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+#modeLabel {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: var(--accent-secondary);
+}
+
+.circle-timer {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    padding: 10px;
+    box-sizing: content-box;
+    margin-bottom: 30px;
+}
+
+.circle-timer svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform: rotate(-90deg);
+}
+
+.circle-timer circle {
+    fill: none;
+    stroke-width: 12;
+}
+
+.circle-bg {
+    stroke: rgba(255, 255, 255, 0.15);
+}
+
+.circle-progress {
+    stroke: var(--accent);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s linear;
+    filter: drop-shadow(0 0 6px var(--accent));
+}
+
+.time-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--accent);
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #ccc;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: transform 0.4s ease;
+}
+
+button:active::after {
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0s;
+}
+
+.start {
+    background: var(--accent);
+    color: #000;
+}
+
+.pause {
+    background: var(--accent-secondary);
+    color: white;
+}
+
+.reset {
+    background: var(--danger);
+    color: white;
+}
+
+.mode {
+    background: #888;
+    color: white;
+}
+
+.settings {
+    display: flex;
+    flex-wrap: wrap;

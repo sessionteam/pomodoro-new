@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pro Pomodoro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Pro Pomodoro</h1>
+        <div id="modeLabel">Focus Time</div>
+        <div class="circle-timer">
+            <svg viewBox="0 0 240 240">
+                <circle class="circle-bg" cx="120" cy="120" r="104" />
+                <circle class="circle-progress" cx="120" cy="120" r="104" stroke-dasharray="653.45" stroke-dashoffset="0" />
+            </svg>
+            <div class="time-text" id="timerText">25:00</div>
+        </div>
+        <div class="buttons">
+            <button class="start" onclick="startTimer()">Start</button>
+            <button class="pause" onclick="pauseTimer()">Pause</button>
+            <button class="reset" onclick="resetTimer()">Reset</button>
+            <button class="mode" onclick="toggleBreak()">Break</button>
+        </div>
+        <div class="settings">
+            <label>Work: <input id="workInput" type="number" value="25" min="1"></label>
+            <label>Break: <input id="breakInput" type="number" value="5" min="1"></label>
+            <label>Long: <input id="longBreakInput" type="number" value="15" min="1"></label>
+        </div>
+        <div class="info">Pomodoros: <span id="sessionCount">0</span></div>
+        <div class="toggle-theme" onclick="toggleTheme()">Toggle Light/Dark Mode</div>
+        <div class="toggle-music" onclick="toggleMusic()">Toggle Music 🎵</div>
+
+        <div class="info" style="font-size: 0.8rem; margin-top: 8px;">
+            Background music by 
+            <a href="https://www.soundhelix.com/" target="_blank" style="color: var(--accent); text-decoration: underline;">
+                SoundHelix
+            </a>
+        </div>
+
+        <audio id="alarmSound" src="./mixkit-happy-bells-notification-937.wav" preload="auto"></audio>
+        <audio id="bgMusic" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
